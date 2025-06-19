@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gaurav Dang - Resume</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f7f7fa;
+      margin: 0;
+      padding: 0;
+      color: #222;
+    }
+    .resume-wrapper {
+      display: flex;
+      max-width: 1100px;
+      margin: 32px auto;
+      background: #fff;
+      box-shadow: 0 4px 24px #d1d8e0;
+      border-radius: 14px;
+      overflow: hidden;
+      min-height: 900px;
+    }
+    .sidebar {
+      width: 340px;
+      background: #e9eef2;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+    .sidebar-diagonal {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 220px;
+      background: #3887b6;
+      clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+      z-index: 1;
+    }
+    .profile-pic {
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 18px;
+      border: 6px solid #fff;
+      box-shadow: 0 4px 16px #0b3c4c33;
+      margin-top: 36px;
+      position: relative;
+      z-index: 2;
+      background: #fff;
+    }
+    .sidebar-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      margin-top: 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .sidebar .name {
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: #3887b6;
+      margin: 18px 0 0 0;
+      text-align: center;
+      line-height: 1.1;
+    }
+    .sidebar .title {
+      font-size: 1.1rem;
+      color: #888;
+      margin-bottom: 18px;
+      text-align: center;
+    }
+    .contact-section {
+      width: 85%;
+      margin: 18px 0 0 0;
+    }
+    .contact-section .section-title {
+      font-size: 1.15em;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      color: #3887b6;
+      text-transform: uppercase;
+      margin-top: 0;
+    }
+    .contact-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 0 0;
+      color: #333;
+    }
+    .contact-list li {
+      display: flex;
+      align-items: center;
+      color: #333;
+      font-size: 1em;
+      margin-bottom: 10px;
+      gap: 10px;
+    }
+    .contact-list svg {
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+      opacity: 0.85;
+      color: #3887b6;
+    }
+    .about-section, .skills-section {
+      width: 85%;
+      margin: 24px 0 0 0;
+    }
+    .about-section .section-title, .skills-section .section-title {
+      font-size: 1.1em;
+      font-weight: bold;
+      color: #3887b6;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .about-section p {
+      color: #555;
+      font-size: 1em;
+      margin: 0;
+      line-height: 1.5;
+    }
+    .skills-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .skills-list li {
+      color: #555;
+      font-size: 1em;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .skills-list svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      opacity: 0.7;
+    }
+    .main {
+      flex: 1;
+      padding: 44px 48px 44px 48px;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+    .main-section {
+      margin-bottom: 36px;
+    }
+    .main-section:last-child {
+      margin-bottom: 0;
+    }
+    .main-section .section-title {
+      font-size: 1.35em;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-transform: none;
+      margin-bottom: 16px;
+      color: #3887b6;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .timeline {
+      border-left: 2px solid #3887b6;
+      margin-left: 18px;
+      padding-left: 24px;
+      position: relative;
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 24px;
+    }
+    .timeline-dot {
+      position: absolute;
+      left: -34px;
+      top: 6px;
+      width: 14px;
+      height: 14px;
+      background: #fff;
+      border: 3px solid #3887b6;
+      border-radius: 50%;
+      z-index: 2;
+    }
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+    .timeline-item .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 2px;
+    }
+    .timeline-item .item-title {
+      font-weight: bold;
+      color: #222;
+      font-size: 1.08em;
+    }
+    .timeline-item .item-role {
+      font-weight: bold;
+      font-style: italic;
+      color: #3887b6;
+      font-size: 1em;
+      margin-bottom: 2px;
+    }
+    .timeline-item .item-date {
+      color: #888;
+      font-size: 0.98em;
+      font-weight: 500;
+      margin-left: 12px;
+      white-space: nowrap;
+    }
+    .timeline-item .item-desc {
+      color: #444;
+      font-size: 0.98em;
+      margin-bottom: 0;
+      margin-top: 2px;
+    }
+    .timeline-item ul {
+      margin: 0 0 0 18px;
+      padding: 0;
+    }
+    .timeline-item ul li {
+      margin-bottom: 4px;
+      color: #444;
+      font-size: 0.98em;
+    }
+    hr.section-divider {
+      border: none;
+      border-top: 2px solid #e0e6ea;
+      margin: 32px 0 24px 0;
+    }
+    .reference-block {
+      margin-top: 10px;
+      color: #222;
+      font-size: 1em;
+    }
+    .reference-block .ref-title {
+      font-weight: bold;
+      color: #222;
+      font-size: 1.08em;
+    }
+    .reference-block .ref-role {
+      color: #3887b6;
+      font-weight: 500;
+      font-size: 1em;
+    }
+    .reference-block .ref-contact {
+      color: #444;
+      font-size: 0.98em;
+      margin-top: 2px;
+    }
+    @media (max-width: 900px) {
+      .resume-wrapper { flex-direction: column; }
+      .sidebar { width: 100%; min-height: 0; }
+      .main { padding: 24px 12px; }
+    }
+    @media (max-width: 600px) {
+      .main { padding: 12px 4px; }
+      .sidebar { padding: 0; }
+      .sidebar .name { font-size: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="resume-wrapper">
+    <div class="sidebar">
+      <div class="sidebar-diagonal"></div>
+      <img src="profile.jpg" alt="Profile Photo" class="profile-pic" />
+      <div class="sidebar-content">
+        <div class="name">Gaurav<br>Dang</div>
+        <div class="title">Account Executive</div>
+        <div class="contact-section">
+          <div class="section-title">Contact</div>
+          <ul class="contact-list">
+            <li><i class="fa-solid fa-phone"></i> 778-922-1914</li>
+            <li><i class="fa-solid fa-envelope"></i> gaurav.doon2001@gmail.com</li>
+            <li><i class="fa-solid fa-location-dot"></i> 14669 60 Ave, Surrey, B.C.</li>
+          </ul>
+        </div>
+        <div class="about-section">
+          <div class="section-title"><i class="fa-solid fa-user"></i> About Me</div>
+          <p>I am a seasoned sales professional with 12 years of experience in retail sales and management. In the last 5 years I transitioned Into IT sales and did account management for Digital marketing and web development companies which also catered to higher educational institutes</p>
+        </div>
+        <div class="skills-section">
+          <div class="section-title"><i class="fa-solid fa-circle-check"></i> Skills</div>
+          <ul class="skills-list">
+            <li><i class="fa-solid fa-circle-check"></i> Communication Skills</li>
+            <li><i class="fa-solid fa-circle-check"></i> Collaboration</li>
+            <li><i class="fa-solid fa-circle-check"></i> Digital Marketing</li>
+            <li><i class="fa-solid fa-circle-check"></i> Project Management</li>
+            <li><i class="fa-solid fa-circle-check"></i> Adaptability</li>
+            <li><i class="fa-solid fa-circle-check"></i> Problem Solving</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="main">
+      <div class="main-section">
+        <div class="section-title"><i class="fa-solid fa-graduation-cap"></i> Education</div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="item-header">
+              <span class="item-title">Lighthouse Labs</span>
+              <span class="item-date">2018</span>
+            </div>
+            <div class="item-role">Web development Bootcamp</div>
+            <div class="item-desc">3 months intensive bootcamp where I learned to code with different technologies and understand front-end and backend architecture.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="item-header">
+              <span class="item-title">Brainstation</span>
+              <span class="item-date">2018</span>
+            </div>
+            <div class="item-role">Certificate in Data science</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="item-header">
+              <span class="item-title">Vancouver Island University</span>
+              <span class="item-date">2003 - 2006</span>
+            </div>
+            <div class="item-role">Diploma In Recreation and Sports Management</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="item-header">
+              <span class="item-title">D.A.V College, India</span>
+              <span class="item-date">2000 - 2003</span>
+            </div>
+            <div class="item-role">Bachelor of Science</div>
+          </div>
+        </div>
+      </div>
+      <hr class="section-divider" />
+      <div class="main-section">
+        <div class="section-title"><i class="fa-solid fa-briefcase"></i> Experience</div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="item-header">
+              <span class="item-title">Enrollment Resources</span>
+              <span class="item-date">Aug 2022 - Dec 2024</span>
+            </div>
+            <div class="item-role">Account Executive/Customer Success Specialist</div>
+            <ul>
+              <li>Managed relationships with higher education Institutions to Increase leads and enrolments.</li>
+              <li>Conducted regular check-ins, analyzed monthly results and delivered training to admissions departments via Zoom.</li>
+              <li>Evaluated client needs to Identify and Implement appropriate marketing solutions.</li>
+            </ul>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="item-header">
+              <span class="item-title">Racing Edge Solutions</span>
+              <span class="item-date">2019 - 2020</span>
+            </div>
+            <div class="item-role">Account Executive</div>
+            <ul>
+              <li>Tasked with identifying, prospecting and closing accounts for Europe and Australia.</li>
+              <li>Built an ongoing relationship with dealership owners and onboarded their Inventory on our platform.</li>
+            </ul>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="item-header">
+              <span class="item-title">The Coding Bull Marketing</span>
+              <span class="item-date">June 2019 - Dec 2019</span>
+            </div>
+            <div class="item-role">Sales Account Manager</div>
+            <ul>
+              <li>Responsibilities included discovery calls, demos and closing clients for digital marketing and lead generation services</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <hr class="section-divider" />
+      <div class="main-section">
+        <div class="section-title"><i class="fa-solid fa-address-book"></i> References</div>
+        <div class="reference-block">
+          <div class="ref-title">Sterling Simpson</div>
+          <div class="ref-role">VP Sales, Enrollment Resources</div>
+          <div class="ref-contact">
+            <strong>Phone:</strong> 778-977-0037<br>
+            <strong>Email:</strong> sterling@enrollmentresources.com
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
